@@ -1,0 +1,26 @@
+
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>AD->SID converter</title>
+
+    </head>
+    <body>
+        <div class="content">    
+            <div>
+                <label>Login, imie i nazwisko lub mail - oddzielone enterem</label><br><br>
+                <textarea rows="8" cols="30" placeholder="type here..." id="input-area"></textarea> <!--Tu masz textfielda można enterowac-->
+                <button id="submit">Submit</button>
+            </div>
+            <br>
+            <div>
+                <fieldset> <!--masz ty ładna ramke na SIDy-->
+                    <legend>&nbsp; User SID &nbsp;</legend>
+                    <ul id="list"></ul>
+                </fieldset>    
+            </div>
+        </div>
+    <%= javascript_include_tag 'application','test' %>
+    </body>
+</html>
