@@ -19,7 +19,7 @@ class AdUser < ApplicationRecord
   def list_users(sids)
     results = []
     allUsers.each do |user| 
-      results << user[:displayname].to_s if sids.include?(user.sid)
+      results << user[:samaccountname].to_s if sids.include?(user.sid)
     end
     results
   end

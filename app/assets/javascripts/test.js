@@ -19,6 +19,7 @@ function requestSids(data){
 
 function getInput(inputArea){
     let value = inputArea.val()
+    value = clean(value);
     if (value !== ""){
        value = value.split("\n").join(",")
     }
@@ -51,6 +52,16 @@ function requestUsers(data){
         },
         "json"
     );
+}
+
+function clean(value){
+    if (value.includes(";")){
+    value = value.trim().split(";");
+    value = value.map(v => v.trim());
+    return value.join("\n")
+    } else {
+        return value
+    }
 }
 
 
