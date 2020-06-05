@@ -17,9 +17,9 @@ class AdUser < ApplicationRecord
     
   public
   def list_users(sids)
-    results = Hash.new
-    sids.each do |sid|
-      results[sid]=find_user(sid)
+    results = []
+    allUsers.each do |user| 
+      results << user[:displayname].to_s if sids.include?(user.sid)
     end
     results
   end
@@ -29,7 +29,7 @@ class AdUser < ApplicationRecord
     keys.each do |key|
       results << find_sid(key)
     end
-    results.join(",")
+    results
   end
   
   private 
@@ -45,21 +45,13 @@ class AdUser < ApplicationRecord
     return user.sid if not user.nil? 
     return "Not Found"
   end
-  
-  def find_user(sid)
-
-  end
-
-  def sid?(key)
-
-  end
 
   def authorize
     ActiveDirectory::Base.setup(@settings)
   end
 
   def allUsers
-
+    ActiveDirectory::User.find(:all, :sn => "*")
   end
   
 

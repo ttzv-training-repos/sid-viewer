@@ -1,9 +1,9 @@
-const inputArea = $("#input-area");
-const submit = $("#submit");
+const inputAreaUsers = $("#input-area-user");
+const submitUsers = $("#submit-user");
 
-submit.click(function (e) { 
+submitUsers.click(function (e) { 
     console.log("post")
-    input = getInput()
+    input = getInput(inputAreaUsers)
     if (input.data) requestSids(input)
 });
 
@@ -11,13 +11,13 @@ function requestSids(data){
     $.post("ad_users/sid_api", data,
         function (data, textStatus, jqXHR) {
             console.log(data, textStatus, jqXHR)
-            insertSids(data);
+            fillList($('#list-sid'), data, "sids")
         },
         "json"
     );
 }
 
-function getInput(){
+function getInput(inputArea){
     let value = inputArea.val()
     if (value !== ""){
        value = value.split("\n").join(",")
@@ -25,14 +25,33 @@ function getInput(){
     return {data: value}
 }
 
-function insertSids(hash){
-    let $list = $("#list");
-    $list.empty();
-    sids = hash.sids.split(',')
-    sids.forEach(element => {
+function fillList(list, data, key){
+    list.empty();
+    data[key].forEach(element => {
         let li = document.createElement('li');
         li.textContent = element;
-        $list.append(li); 
+        list.append(li); 
     });
 }
+
+const inputAreaSIDs = $("#input-area-sid");
+const submitSIDs = $("#submit-sid");
+
+submitSIDs.click(function (e) { 
+    console.log("post")
+    input = getInput(inputAreaSIDs)
+    if (input.data) requestUsers(input)
+});
+
+function requestUsers(data){
+    $.post("ad_users/user_api", data,
+        function (data, textStatus, jqXHR) {
+            console.log(data, textStatus, jqXHR)
+            fillList($('#list-user'), data, "users")
+        },
+        "json"
+    );
+}
+
+
 

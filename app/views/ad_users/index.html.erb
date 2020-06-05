@@ -7,18 +7,34 @@
 
     </head>
     <body>
-        <div class="content">    
-            <div>
-                <label>Login, imie i nazwisko lub mail - oddzielone enterem</label><br><br>
-                <textarea rows="8" cols="30" placeholder="type here..." id="input-area"></textarea> <!--Tu masz textfielda można enterowac-->
-                <button id="submit">Submit</button>
+        <div class="content">   
+            <div class="user-sid"> 
+                <div>
+                    <label>User -> SID</label><br><br>
+                    <textarea rows="8" cols="30" placeholder="Login, imie i nazwisko lub mail - oddzielone enterem" id="input-area-user"></textarea> <!--Tu masz textfielda można enterowac-->
+                    <button id="submit-user">Submit</button>
+                </div>
+                <br>
+                <div>
+                    <fieldset> <!--masz ty ładna ramke na SIDy-->
+                        <legend>&nbsp; SID &nbsp;</legend>
+                        <ul id="list-sid"></ul>
+                    </fieldset>    
+                </div>
             </div>
-            <br>
-            <div>
-                <fieldset> <!--masz ty ładna ramke na SIDy-->
-                    <legend>&nbsp; User SID &nbsp;</legend>
-                    <ul id="list"></ul>
-                </fieldset>    
+            <div class="sid-user">
+                <div>
+                    <label>SID -> User</label><br><br>
+                    <textarea rows="8" cols="30" placeholder="SIDy oddzielone enterem" id="input-area-sid"></textarea> <!--Tu masz textfielda można enterowac-->
+                    <button id="submit-sid">Submit</button>
+                </div>
+                <br>
+                <div>
+                    <fieldset> <!--masz ty ładna ramke na SIDy-->
+                        <legend>&nbsp; User &nbsp;</legend>
+                        <ul id="list-user"></ul>
+                    </fieldset>    
+                </div>
             </div>
         </div>
     <%= javascript_include_tag 'application','test' %>
