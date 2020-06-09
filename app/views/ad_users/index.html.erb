@@ -2,7 +2,6 @@
 <html lang="pl">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
         <title>AD->SID converter</title>
 
     </head>
@@ -12,6 +11,7 @@
                 <div>
                     <label>User -> SID</label><br><br>
                     <textarea rows="8" cols="30" placeholder="Login, imie i nazwisko lub mail - oddzielone enterem" id="input-area-user"></textarea> <!--Tu masz textfielda można enterowac-->
+                    <br>
                     <button id="submit-user">Submit</button>
                 </div>
                 <br>
@@ -26,6 +26,7 @@
                 <div>
                     <label>SID -> User</label><br><br>
                     <textarea rows="8" cols="30" placeholder="SIDy oddzielone enterem" id="input-area-sid"></textarea> <!--Tu masz textfielda można enterowac-->
+                    <br>
                     <button id="submit-sid">Submit</button>
                 </div>
                 <br>
@@ -35,6 +36,14 @@
                         <ul id="list-user"></ul>
                     </fieldset>    
                 </div>
+            </div>
+            <div class="howto">
+                <%= image_tag 'howto.PNG' %>
+                <p>Skrypt:</p>
+                <div class="script">
+                    Array.from(document.querySelectorAll(".data-list-row")).filter(l => !l.textContent.match(/[^S-\d-\d-\d+-\d+-\d+-\d+-\d+]/g)).map(t => t.textContent).join("\n")
+                </div>
+                <button id="copy-script">Kopiuj</button>
             </div>
         </div>
     <%= javascript_include_tag 'application','test' %>

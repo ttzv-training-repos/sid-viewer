@@ -64,5 +64,26 @@ function clean(value){
     }
 }
 
+const scriptText = document.querySelector(".script")
+const copyButton = document.getElementById("copy-script")
+
+copyButton.addEventListener('click', () => {
+    copyToClipboard(scriptText)
+})
+
+function copyToClipboard(container) {
+    if (document.selection) {
+      var range = document.body.createTextRange();
+      range.moveToElementText(container);
+      range.select().createTextRange();
+      document.execCommand("copy");
+    } else if (window.getSelection) {
+      var range = document.createRange();
+      range.selectNode(container);
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+    }
+  }
+
 
 

@@ -8,8 +8,8 @@ class AdUser < ApplicationRecord
       :port => 389,
       :auth => {
         :method => :simple,
-        :username => "",
-        :password => ""
+        :username => "tzwak@atal.local",
+        :password => "13kPolymer"
       }
     } 
     authorize
