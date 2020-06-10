@@ -2,14 +2,15 @@ class AdUser < ApplicationRecord
 
   def initialize(e)
     super(e)
+    user_config = JSON.parse(File.read("userconfig.json"), {:symbolize_names => true})
     @settings = {
-      :host => 'ataladc1.atal.local',
-      :base => 'dc=atal,dc=local',
-      :port => 389,
+      :host => user_config[:host],
+      :base => user_config[:base],
+      :port => user_config[:port],
       :auth => {
         :method => :simple,
-        :username => "tzwak@atal.local",
-        :password => "13kPolymer"
+        :username => user_config[:login],
+        :password => user_config[:password]
       }
     } 
     authorize

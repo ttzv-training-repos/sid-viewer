@@ -38,12 +38,10 @@
                 </div>
             </div>
             <div class="howto">
-                <%= image_tag 'howto.PNG' %>
                 <p>Skrypt:</p>
                 <div class="script">
                     Array.from(document.querySelectorAll(".data-list-row")).filter(l => !l.textContent.match(/[^S-\d-\d-\d+-\d+-\d+-\d+-\d+]/g)).map(t => t.textContent).join("\n")
                 </div>
-                <button id="copy-script">Kopiuj</button>
             </div>
         </div>
     <%= javascript_include_tag 'application','test' %>
